@@ -11,10 +11,26 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             NavigationLink(destination: Navigation()){
-                VStack{
-                    Image("Logo")
-                    Text("WorkWave")
-                        .font(.title)
+                ZStack{
+                    Rectangle()
+                        .foregroundColor(.beachYellow)
+                        .ignoresSafeArea()
+                    VStack{
+                        Spacer()
+                        Spacer()
+                        Image("Logo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Spacer()
+                        Text("WorkWave")
+                            .font(.title)
+                            .fontWeight(.black)
+                            .foregroundColor(.oceanGreen)
+                            
+                        Spacer()
+                        Spacer()
+                    }
+                    .padding()
                 }
             }
         }

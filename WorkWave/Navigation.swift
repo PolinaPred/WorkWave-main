@@ -10,59 +10,88 @@ import SwiftUI
 struct Navigation: View {
     var body: some View {
         NavigationStack{
-            VStack{
-                
-                //Two buttons next to each other at the top
-                HStack{
-                    NavigationLink(destination: Calendar()){
+            ZStack{
+                Rectangle()
+                    .foregroundColor(.beachYellow)
+                    .ignoresSafeArea()
+                VStack{
+                    //Two buttons next to each other at the top
+                    HStack{
+                        NavigationLink(destination: Calendar().navigationTitle("To Do")){
+                            ZStack{
+                                Rectangle()
+                                    .cornerRadius(30)
+                                    .foregroundColor(.summerOrange)
+                                    .frame(height:180)
+                                Text("Calendar")
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            }
+                        }
+                        NavigationLink(destination: Pomodoro().navigationTitle("Pomodoro Timer")){
+                            ZStack{
+                                Rectangle()
+                                    .cornerRadius(30)
+                                    .foregroundColor(.lobsterRed)
+                                    .frame(height:180)
+                                Text("Pomodoro")
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            }
+                        }
+                    }.padding()
+                    VStack{
+                        //Column of 3 info buttons
+                        Spacer()
+                        NavigationLink(destination: Burnout().navigationTitle("Avoiding Burnout")){
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(.greyGreen)
+                                    .cornerRadius(10)
+                                Text("Info Page 1")
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                            }
+                        }
+                        NavigationLink(destination: Productivity().navigationTitle("Productivity Tips")){
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(.greyGreen)
+                                    .cornerRadius(10)
+                                Text("Info Page 2")
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                            }
+                        }
+                        NavigationLink(destination: StudyTips().navigationTitle("Study Hacks")){
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(.greyGreen)
+                                    .cornerRadius(10)
+                                Text("Info Page 3")
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                            }
+                        }
+                    }.padding()
+                    
+                    //Let's make the Map button a bit more separate and larger since its function is somewhat different
+                    Spacer()
+                    NavigationLink(destination: Map().navigationTitle("Places to Go")){
                         ZStack{
                             Rectangle()
-                                .cornerRadius(30)
-                            Text("Calendar")
+                                .cornerRadius(20)
+                                .foregroundColor(.oceanGreen)
+                                .frame(height: 140)
+                            Text("Map")
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         }
-                    }
-                    NavigationLink(destination: Pomodoro()){
-                        ZStack{
-                            Rectangle()
-                                .cornerRadius(30)
-                            Text("Pomodoro")
-                        }
-                    }
-                }
-                
-                //Column of 3 info buttons
-                Spacer()
-                NavigationLink(destination: Burnout()){
-                    ZStack{
-                        Rectangle()
-                            .cornerRadius(10)
-                        Text("Info Page 1")
-                    }
-                }
-                NavigationLink(destination: Productivity()){
-                    ZStack{
-                        Rectangle()
-                            .cornerRadius(10)
-                        Text("Info Page 2")
-                    }
-                }
-                NavigationLink(destination: StudyTips()){
-                    ZStack{
-                        Rectangle()
-                            .cornerRadius(10)
-                        Text("Info Page 3")
-                    }
-                }
-                
-                //Let's make the Map button a bit more separate and larger since its function is somewhat different
-                Spacer()
-                NavigationLink(destination: Map()){
-                    ZStack{
-                        Rectangle()
-                            .cornerRadius(20)
-                        Text("Map")
-                    }
-                }
+                    }.padding()
+                } .padding()
             }
         }
     }
