@@ -7,7 +7,13 @@
 
 import SwiftUI
 
+var num = 0
+var tasks = [String]()
+
 struct Calendar: View {
+    
+    @State var dateSelected = Date()
+    
     var body: some View {
         VStack{
             HStack{
@@ -35,11 +41,10 @@ struct Calendar: View {
             }.padding()
             VStack{
                 HStack{
-                    Spacer()
                     ZStack{
                         Rectangle()
                             .cornerRadius(50)
-                            .frame(width:130, height:40)
+                            .frame(width:180, height:40)
                             .foregroundColor(.pink)
                         Text("Something 1")
                     }
@@ -47,19 +52,16 @@ struct Calendar: View {
                     ZStack{
                         Rectangle()
                             .cornerRadius(50)
-                            .frame(width:130, height:40)
+                            .frame(width:180, height:40)
                             .foregroundColor(.green)
                         Text("Something 2")
                     }
-                    Spacer()
                 }
-                Spacer()
                 HStack{
-                    Spacer()
                     ZStack{
                         Rectangle()
                             .cornerRadius(50)
-                            .frame(width:130, height:40)
+                            .frame(width:180, height:40)
                             .foregroundColor(.blue)
                         Text("Something 3")
                     }
@@ -67,15 +69,31 @@ struct Calendar: View {
                     ZStack{
                         Rectangle()
                             .cornerRadius(50)
-                            .frame(width:130, height:40)
+                            .frame(width:180, height:40)
                             .foregroundColor(.yellow)
                         Text("Something 4")
                     }
-                    Spacer()
                 }
                 Spacer()
+            }.padding()
+            DatePicker(
+                selection: $dateSelected,
+                displayedComponents: [.date],
+                label: { Text("View Tasks for") })
+            ScrollView{
+                VStack{
+                    ForEach(0..<24) { num in
+                        HStack{
+                            Text("\(num):30")
+                            
+                        }
+                        HStack{
+                            Text("\(num+1):00")
+                        }
+                    }
+                    }
             }
-        }
+        }.padding()
     }
 }
 
