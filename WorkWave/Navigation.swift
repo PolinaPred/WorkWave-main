@@ -79,7 +79,7 @@ struct Navigation: View {
                     
                     //Let's make the Map button a bit more separate and larger since its function is somewhat different
                     Spacer()
-                    NavigationLink(destination: Map().navigationTitle("Places to Go")){
+                    NavigationLink(destination: MapPage().navigationTitle("Places to Go")){
                         ZStack{
                             Rectangle()
                                 .cornerRadius(20)

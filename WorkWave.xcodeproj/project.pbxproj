@@ -12,12 +12,12 @@
 		BD5C26BC2C46C96C00C66E40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5C26BB2C46C96C00C66E40 /* Assets.xcassets */; };
 		BD5C26BF2C46C96C00C66E40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5C26BE2C46C96C00C66E40 /* Preview Assets.xcassets */; };
 		BDEAE0642C46D8F200FBB8FF /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE0632C46D8F200FBB8FF /* Navigation.swift */; };
-		BDEAE0662C46DA5400FBB8FF /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE0652C46DA5400FBB8FF /* Map.swift */; };
 		BDEAE0682C46DAA900FBB8FF /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE0672C46DAA900FBB8FF /* Calendar.swift */; };
 		BDEAE06A2C46DAFC00FBB8FF /* Pomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE0692C46DAFC00FBB8FF /* Pomodoro.swift */; };
 		BDEAE06E2C46DB8000FBB8FF /* Burnout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE06D2C46DB8000FBB8FF /* Burnout.swift */; };
 		BDEAE0702C46DC7600FBB8FF /* Productivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE06F2C46DC7600FBB8FF /* Productivity.swift */; };
 		BDEAE0722C46DD3100FBB8FF /* StudyTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE0712C46DD3100FBB8FF /* StudyTips.swift */; };
+		BDEAE0762C48045F00FBB8FF /* MapPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE0752C48045F00FBB8FF /* MapPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,12 +27,12 @@
 		BD5C26BB2C46C96C00C66E40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5C26BE2C46C96C00C66E40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BDEAE0632C46D8F200FBB8FF /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		BDEAE0652C46DA5400FBB8FF /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		BDEAE0672C46DAA900FBB8FF /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		BDEAE0692C46DAFC00FBB8FF /* Pomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pomodoro.swift; sourceTree = "<group>"; };
 		BDEAE06D2C46DB8000FBB8FF /* Burnout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Burnout.swift; sourceTree = "<group>"; };
 		BDEAE06F2C46DC7600FBB8FF /* Productivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity.swift; sourceTree = "<group>"; };
 		BDEAE0712C46DD3100FBB8FF /* StudyTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTips.swift; sourceTree = "<group>"; };
+		BDEAE0752C48045F00FBB8FF /* MapPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,11 +69,11 @@
 				BD5C26B92C46C96A00C66E40 /* ContentView.swift */,
 				BDEAE0632C46D8F200FBB8FF /* Navigation.swift */,
 				BDEAE0672C46DAA900FBB8FF /* Calendar.swift */,
-				BDEAE0652C46DA5400FBB8FF /* Map.swift */,
 				BDEAE0692C46DAFC00FBB8FF /* Pomodoro.swift */,
 				BDEAE06D2C46DB8000FBB8FF /* Burnout.swift */,
 				BDEAE06F2C46DC7600FBB8FF /* Productivity.swift */,
 				BDEAE0712C46DD3100FBB8FF /* StudyTips.swift */,
+				BDEAE0752C48045F00FBB8FF /* MapPage.swift */,
 				BD5C26BB2C46C96C00C66E40 /* Assets.xcassets */,
 				BD5C26BD2C46C96C00C66E40 /* Preview Content */,
 			);
@@ -160,7 +160,7 @@
 			files = (
 				BDEAE0642C46D8F200FBB8FF /* Navigation.swift in Sources */,
 				BD5C26BA2C46C96A00C66E40 /* ContentView.swift in Sources */,
-				BDEAE0662C46DA5400FBB8FF /* Map.swift in Sources */,
+				BDEAE0762C48045F00FBB8FF /* MapPage.swift in Sources */,
 				BDEAE0722C46DD3100FBB8FF /* StudyTips.swift in Sources */,
 				BDEAE0702C46DC7600FBB8FF /* Productivity.swift in Sources */,
 				BDEAE06E2C46DB8000FBB8FF /* Burnout.swift in Sources */,

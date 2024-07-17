@@ -41,7 +41,7 @@ struct Calendar: View {
                             .cornerRadius(50)
                             .frame(width:130, height:40)
                             .foregroundColor(.pink)
-                        Text("")
+                        Text("Something 1")
                     }
                     Spacer()
                     ZStack{
@@ -49,7 +49,7 @@ struct Calendar: View {
                             .cornerRadius(50)
                             .frame(width:130, height:40)
                             .foregroundColor(.green)
-                        Text("")
+                        Text("Something 2")
                     }
                     Spacer()
                 }
@@ -61,7 +61,7 @@ struct Calendar: View {
                             .cornerRadius(50)
                             .frame(width:130, height:40)
                             .foregroundColor(.blue)
-                        Text("")
+                        Text("Something 3")
                     }
                     Spacer()
                     ZStack{
@@ -69,7 +69,7 @@ struct Calendar: View {
                             .cornerRadius(50)
                             .frame(width:130, height:40)
                             .foregroundColor(.yellow)
-                        Text("")
+                        Text("Something 4")
                     }
                     Spacer()
                 }

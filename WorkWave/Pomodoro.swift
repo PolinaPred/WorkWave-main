@@ -9,17 +9,18 @@ import SwiftUI
 struct Pomodoro: View {
     
     
-    @ObservedObject var  viewModel = viewModel()
+    //@ObservedObject var  viewModel = viewModel()
     
     @State private var selectedTab = 0
     
     @State private var indicatorOffset: CGFloat = -3.5
     
-    
+    /*
     init() {
         _selectedTab = State(initialValue: 0)
         _indicatorOffset = State(initialValue:  UIScreen.main.bounds.width / -3.5)
     }
+     */
     
     var body: some View {
         NavigationView {
@@ -66,6 +67,7 @@ struct Pomodoro: View {
         }
         .navigationBarHidden(true)
     }
+     
 }
 
 #Preview {
