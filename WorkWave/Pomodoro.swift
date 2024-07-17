@@ -7,68 +7,94 @@
 import SwiftUI
 
 struct Pomodoro: View {
-    
-    
-    //@ObservedObject var  viewModel = viewModel()
-    
-    @State private var selectedTab = 0
-    
-    @State private var indicatorOffset: CGFloat = -3.5
-    
-    /*
-    init() {
-        _selectedTab = State(initialValue: 0)
-        _indicatorOffset = State(initialValue:  UIScreen.main.bounds.width / -3.5)
-    }
-     */
-    
-    var body: some View {
-        NavigationView {
-            ZStack {
-                Color.black.edgesIgnoringSafeArea(.all)
+    @EnvironmentObject var pomoduroModel: PomoduroModel
+        var body: some View {
+            
+            VStack{
+               
                 
-                VStack {
-                    HStack {
-                        Spacer()
-                        Text("Pomodoro")
-                            .foregroundColor(selectedTab == 0 ? .white : .gray)
-                            .onTapGesture {
-                                selectedTab = 0
-                                indicatorOffset = UIScreen.main.bounds.width / -3.5
+                
+                Text("Pomoduro Timer")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .foregroundColor(Color("GreyGreen"))
+                    .multilineTextAlignment(.center)
+                
+                GeometryReader{proxy in
+                    
+                    
+                    
+                    VStack(spacing: 15){
+                        ZStack{
+                            
+                            Button{
+                                
+                                if pomoduroModel.isStarted{
+                                    
+                                }else{
+                                    
+                                    pomoduroModel.addNewTimer = true
+                                    
+                                }
+                                
+                            }label: {
+                                
+                                Image(systemName: pomoduroModel.isStarted ? "timer": "pause")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .frame(width: 80, height: 80)
+                            .rotationEffect(.init(degrees: -90))
+                                
                             }
-                        Spacer()
-                        Text("Short break")
-                            .foregroundColor(selectedTab == 1 ? .white : .gray)
-                            .onTapGesture {
-                                selectedTab = 1
-                                indicatorOffset = 1
-                            }
-                        Spacer()
-                        Text("Long break")
-                            .foregroundColor(selectedTab == 2 ? .white : .gray)
-                            .onTapGesture {
-                                selectedTab = 2
-                                indicatorOffset = UIScreen.main.bounds.width / 3.5
-                            }
-                        Spacer()
+                            
+                            
+                            
+    //                        Circle()
+    //                            .fill(.pinkish)
+    //                            .padding(-40.0)
+    //
+    //                        Circle()
+    //                            .fill(.)
+    //
+    //
+    //                        Circle()
+    //                            .trim(from: 0, to: 0.5)
+    //                            .stroke(Color("LobsterRed").opacity(0.7), lineWidth: 10)
+    //                            .blur(radius: 15)
+                            
+                            
+                        }
+                        .padding()
+                        .frame(height: proxy.size.width)
+                        .rotationEffect(.init(degrees: -90))
+                        
+                        
+                        
                     }
-                    .font(.title3)
-                    .bold()
-                    .padding()
-                    
-                    Rectangle()
-                        .fill(Color(.purple))
-                        .frame(width: UIScreen.main.bounds.width / 8, height: 2)
-                        .offset(x: indicatorOffset, y: 0)
-                    
-                    
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 }
+                
+                Text(pomoduroModel.timeStringValue)
+                
+             
+            }
+            .padding()
+            .preferredColorScheme(.light)
+            .background(Color("BeachYellow"))
+            .ignoresSafeArea()
+
+        }
+        
+        
+        struct Home_Previews: PreviewProvider {
+            static var previews: some View {
+                
+                Pomodoro()
+                    .environmentObject(PomoduroModel())
+                
             }
         }
-        .navigationBarHidden(true)
     }
-     
-}
 
 #Preview {
     Pomodoro()

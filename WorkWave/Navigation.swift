@@ -17,7 +17,7 @@ struct Navigation: View {
                 VStack{
                     //Two buttons next to each other at the top
                     HStack{
-                        NavigationLink(destination: Calendar().navigationTitle("To Do")){
+                        NavigationLink(destination: CalendarPage().navigationTitle("To Do")){
                             ZStack{
                                 Rectangle()
                                     .cornerRadius(30)
@@ -50,7 +50,8 @@ struct Navigation: View {
                                 Rectangle()
                                     .foregroundColor(.greyGreen)
                                     .cornerRadius(10)
-                                Text("Info Page 1")
+                                Text("Burnout")
+                                    .fontWeight(.bold)
                                     .foregroundColor(.white)
                                     .font(.title)
                             }
@@ -60,7 +61,8 @@ struct Navigation: View {
                                 Rectangle()
                                     .foregroundColor(.greyGreen)
                                     .cornerRadius(10)
-                                Text("Info Page 2")
+                                Text("Productivity Tips")
+                                    .fontWeight(.bold)
                                     .foregroundColor(.white)
                                     .font(.title)
                             }
@@ -70,7 +72,8 @@ struct Navigation: View {
                                 Rectangle()
                                     .foregroundColor(.greyGreen)
                                     .cornerRadius(10)
-                                Text("Info Page 3")
+                                Text("Test Taking Tips")
+                                    .fontWeight(.bold)
                                     .foregroundColor(.white)
                                     .font(.title)
                             }
