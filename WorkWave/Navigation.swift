@@ -52,7 +52,7 @@ struct Navigation: View {
                                 Rectangle()
                                     .foregroundColor(.greyGreen)
                                     .cornerRadius(10)
-                                Text("Burnout")
+                                Text("Avoiding Burnout")
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
                                     .font(.title)
