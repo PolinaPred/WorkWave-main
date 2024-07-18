@@ -10,8 +10,9 @@ struct Pomodoro: View {
     @EnvironmentObject var pomoduroModel: PomoduroModel
         
         var body: some View {
-            
-            VStack{/*
+          Image("Pomodoro")
+            /*
+            VStack{
                 
                 
                 
@@ -31,7 +32,7 @@ struct Pomodoro: View {
                             Button{
                                 
                                 if pomoduroModel.isStarted{
-                                    
+                                    pomoduroModel.stopTimer()
                                 }else{
                                     
                                     pomoduroModel.addNewTimer = true
@@ -50,18 +51,18 @@ struct Pomodoro: View {
                             
                             
                             
-                            //                        Circle()
-                            //                            .fill(.pinkish)
-                            //                            .padding(-40.0)
-                            //
-                            //                        Circle()
-                            //                            .fill(.)
-                            //
-                            //
-                            //                        Circle()
-                            //                            .trim(from: 0, to: 0.5)
-                            //                            .stroke(Color("LobsterRed").opacity(0.7), lineWidth: 10)
-                            //                            .blur(radius: 15)
+                            Circle()
+                                .fill(.pinkish)
+                                .padding(-40.0)
+                            
+                            Circle()
+                                .fill(.white)
+                            
+                            
+                            Circle()
+                                .trim(from: 0, to: 0.5)
+                                .stroke(Color("LobsterRed").opacity(0.7), lineWidth: 10)
+                                .blur(radius: 15)
                             
                             
                         }
@@ -83,6 +84,9 @@ struct Pomodoro: View {
                 
                 
                 Text(pomoduroModel.timeStringValue)
+                    .font(.system(size: 45, weight: .light))
+                    .animation(.easeInOut, value: pomoduroModel.progress)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 
                 
             }
@@ -94,10 +98,13 @@ struct Pomodoro: View {
                     Color.orange
                         .opacity(pomoduroModel.addNewTimer ? 0.25: 0)
                         .onTapGesture {
+                            pomoduroModel.hour = 0
+                            pomoduroModel.minutes = 0
+                            pomoduroModel.seconds = 0
                             pomoduroModel.addNewTimer = false
                         }
                     
-                    NewTimeView()
+                    newTimeView()
                         .frame(maxHeight: .infinity, alignment: .bottom )
                         .offset(y: pomoduroModel.addNewTimer ? 0: 400)
                     
@@ -106,13 +113,37 @@ struct Pomodoro: View {
                 
             })
             .preferredColorScheme(.light)
+            .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()){}
+            .alert("Congradulations! You did it!", isPresented: $pomoduroModel.isFinished){
+                
+                Button("Start New", role: .cancel ){}
+                
+                pomoduroModel.stopTimer()
+                pomoduroModel.addNewTimer = true
+                
+            }
+            Button("Close", role: .destructive){
+                
+                pomoduroModel.stopTimer()
+                
+            }
+            
+            
+            
+            do {   in
+            if pomoduroModel.isStarted{
+                    pomoduroModel.updateTimer()
+                }
+                
+            }
+            
             .background(Color("BeachYellow"))
             .ignoresSafeArea()
             
             
             
-            @ViewBuilder
-            func NewTimeView () -> some View{
+            
+            func newTimeView () -> some view {
                 
                 
                 VStack(spacing: 15){
@@ -140,6 +171,15 @@ struct Pomodoro: View {
                                     .fill(.white.opacity(0.07))
                                 
                             }
+                            .contextMenu{
+                                
+                                ContextMenuOptions(maxValue: 12, hint: "hr"){value in
+                                    pomoduroModel.hour = value
+                                }
+                                
+                            }
+                        
+                        
                         
                         Text("\(pomoduroModel.minutes) min ")
                             .font(.title3)
@@ -153,6 +193,15 @@ struct Pomodoro: View {
                                     .fill(.white.opacity(0.07))
                                 
                             }
+                            .contextMenu{
+                                
+                                ContextMenuOptions(maxValue: 60, hint: "min"){value in
+                                    pomoduroModel.minutes = value
+                                }
+                                
+                            }
+                        
+                        
                         
                         Text("\(pomoduroModel.seconds) sec")
                             .font(.title3)
@@ -166,12 +215,23 @@ struct Pomodoro: View {
                                     .fill(.white.opacity(0.07))
                                 
                             }
+                            .contextMenu{
+                                
+                                ContextMenuOptions(maxValue: 60, hint: "sec"){value in
+                                    pomoduroModel.seconds = value
+                                }
+                                
+                            }
+                        
+                        
                         
                     }
                     .padding(.top, 20)
                     
                     
                     Button {
+                        
+                        pomoduroModel.startTimer()
                         
                     } label: {
                         Text("Save")
@@ -199,19 +259,38 @@ struct Pomodoro: View {
                     .fill(Color("BeachYellow"))
                     .ignoresSafeArea()
                 
+                @ViewBuilder
+                
+                func ContextMenuOptions(maxValue: Int,hint: String,onClick: @escaping(Int) ->())->
+                some View{
+                    
+                    ForEach(0...maxValue,id: \.self){value in
+                        
+                        Button("\(value) \(hint)"){
+                            
+                            onClick(value)
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
                 
             }
             
-            struct Home_Previews: PreviewProvider {
-                static var previews: some View {
-                    
-                    Home()
-                        .environmentObject(PomoduroModel())
-                    
-                }*/
-            }
+    //        struct Home_Previews: PreviewProvider {
+    //            static var previews: some View {
+    //
+    //                Home()
+    //                    .environmentObject(PomoduroModel())
+    //
+    //            }
+    //        }*/
         }
     }
+
 #Preview {
     Pomodoro()
 }

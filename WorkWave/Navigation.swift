@@ -23,10 +23,12 @@ struct Navigation: View {
                                     .cornerRadius(30)
                                     .foregroundColor(.summerOrange)
                                     .frame(height:180)
-                                Text("Calendar")
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
+                                    Image("CalendarIcon")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width:100, height:200)
+                                }
                             }
                         }
                         NavigationLink(destination: Pomodoro().navigationTitle("Pomodoro Timer")){
@@ -35,10 +37,10 @@ struct Navigation: View {
                                     .cornerRadius(30)
                                     .foregroundColor(.lobsterRed)
                                     .frame(height:180)
-                                Text("Pomodoro")
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                Image("Timer")
+                                    .resizable()
+                                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                                    .frame(width:100, height:200)
                             }
                         }
                     }.padding()
@@ -54,6 +56,7 @@ struct Navigation: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
                                     .font(.title)
+                                    
                             }
                         }
                         NavigationLink(destination: Productivity().navigationTitle("Productivity Tips")){
@@ -88,10 +91,10 @@ struct Navigation: View {
                                 .cornerRadius(20)
                                 .foregroundColor(.oceanGreen)
                                 .frame(height: 140)
-                            Text("Map")
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            Image("MapRetry")
+                                .resizable()
+                                .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                                .frame(width:100, height:200)
                         }
                     }.padding()
                 } .padding()

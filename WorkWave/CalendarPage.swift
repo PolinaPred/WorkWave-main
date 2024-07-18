@@ -9,8 +9,9 @@ import SwiftUI
 import Foundation
 
 var num = 0
-var startTimes = [Date]()
+var startTimes = [String]()
 var endTimes = [Date]()
+var durationList = [String]()
 
 struct CalendarPage: View {
     @State var taskNames = [String]()
@@ -21,10 +22,14 @@ struct CalendarPage: View {
     @State var duration = ""
     @State var start = ""
     @State var dateSelected = Date()
+    @State var startHours = ""
     
     var totalTime: TimeInterval{
         endTime.timeIntervalSince(startTime)
     }
+    var dateFormatter2: DateFormatter { let df = DateFormatter() 
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return df }
     
     var dateFormatter: DateComponentsFormatter {
         let df = DateComponentsFormatter()
@@ -36,115 +41,118 @@ struct CalendarPage: View {
     }
     
     var body: some View {
-        VStack{
-            HStack{
-                Text("To Do")
-                    .font(.title)
-                Spacer()
-                ZStack{
-                    Rectangle()
-                        .cornerRadius(50)
-                        .frame(width:130, height:40)
-                        .foregroundColor(.gray)
-                    HStack{
-                        Text(" New Task")
-                            .foregroundColor(.white)
-                        ZStack{
-                            Circle()
-                                .foregroundColor(.white)
-                                .frame(height:30)
-                            Text("+")
-                                .font(.title)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-            }.padding()
+        ZStack{
+            Rectangle()
+                .foregroundColor(.beachYellow)
+                .opacity(0.3)
+                .ignoresSafeArea()
             VStack{
                 HStack{
-                    ZStack{
-                        Rectangle()
-                            .cornerRadius(50)
-                            .frame(width:180, height:40)
-                            .foregroundColor(.pink)
-                        Text("Something 1")
-                    }
+                    Text("To Do")
+                        .font(.title)
                     Spacer()
-                    ZStack{
-                        Rectangle()
-                            .cornerRadius(50)
-                            .frame(width:180, height:40)
-                            .foregroundColor(.green)
-                        Text("Something 2")
+                    Button{
+                        duration = dateFormatter.string(from: totalTime) ?? ""
+                        start = dateFormatter2.string(from: startTime)
+                        taskNames.append(newTask)
+                        startTimes.append(start)
+                        endTimes.append(endTime)
+                        durationList.append(duration)
+                        
+                    } label: {
+                        Image("plus")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }.frame(width:150)
+                }.padding()
+                VStack{
+                    HStack{
+                        ZStack{
+                            Rectangle()
+                                .cornerRadius(50)
+                                .frame(width:180, height:40)
+                                .foregroundColor(.oceanGreen)
+                            Text("Category 1 - 2 hrs")
+                        }
+                        Spacer()
+                        ZStack{
+                            Rectangle()
+                                .cornerRadius(50)
+                                .frame(width:180, height:40)
+                                .foregroundColor(.summerOrange)
+                            Text("Category 2 - 30 min")
+                        }
                     }
-                }
+                    HStack{
+                        ZStack{
+                            Rectangle()
+                                .cornerRadius(50)
+                                .frame(width:180, height:40)
+                                .foregroundColor(.lobsterRed)
+                            Text("Category 3 - 1 hr")
+                        }
+                        Spacer()
+                        ZStack{
+                            Rectangle()
+                                .cornerRadius(50)
+                                .frame(width:180, height:40)
+                                .foregroundColor(.greyGreen)
+                            Text("Category 4 - 15 min")
+                        }
+                    }
+                }.padding()
                 HStack{
-                    ZStack{
-                        Rectangle()
-                            .cornerRadius(50)
-                            .frame(width:180, height:40)
-                            .foregroundColor(.blue)
-                        Text("Something 3")
-                    }
-                    Spacer()
-                    ZStack{
-                        Rectangle()
-                            .cornerRadius(50)
-                            .frame(width:180, height:40)
-                            .foregroundColor(.yellow)
-                        Text("Something 4")
-                    }
-                }
-            }.padding()
-            HStack{
-                VStack{
-                    TextField(
-                        "Task Name", text: $newTask)
-                    DatePicker(
-                        selection: $startTime,
-                        displayedComponents: [.hourAndMinute],
-                        label: { Text("Start Time")})
-                    
-                    DatePicker(
-                        selection: $endTime,
-                        displayedComponents: [.hourAndMinute],
-                        label: { Text("End Time")})
-                }
-                VStack{
-                    Spacer()
-                    Button("Create"){
-                        //duration = dateFormatter.string(from: totalTime) ?? ""
+                    VStack{
+                        TextField(
+                            "Task Name", text: $newTask).font(.title)
+                        DatePicker(
+                            selection: $startTime,
+                            displayedComponents: [.hourAndMinute],
+                            label: { Text("Start Time")})
                         
-                        //start = dateFormatter.string(from: startTime) ?? ""
-                        
-                        //taskNames.append(newTask)
-                            //startTime.append(startTime)
-                            //endTimes.append(endTime)
+                        DatePicker(
+                            selection: $endTime,
+                            displayedComponents: [.hourAndMinute],
+                            label: { Text("End Time")})
                     }
-                    Spacer()
-                    
-                }
-            }
-            DatePicker(
-                selection: $dateSelected,
-                displayedComponents: [.date],
-                label: { Text("View Tasks for") })
-            ScrollView{
-                VStack{
-                    ForEach(0..<24) { num in
-                        HStack{
-                            Text("\(num):30")
-                            if(taskNames.count > 0 && num < taskNames.count){
-                                    Text(taskNames[num])
+                    VStack{
+                        
+                        Spacer()
+                        if(start.count > 0){
+                            /*var startIndex = start.startIndex
+                            var hourIndex = start.index(start.startIndex, offsetBy: 11)...start.index(start.startIndex, offsetBy: 12)*/
+                        }
+                    }
+                }.padding()
+                /*DatePicker(
+                 selection: $dateSelected,
+                 displayedComponents: [.date],
+                 label: { Text("View Tasks for") })*/
+                ScrollView{
+                    VStack{
+                        ForEach(1..<24) { num in
+                            HStack{
+                                Text("\(num):00")
+                                if(taskNames.count > 0 && num < taskNames.count){
+                                    VStack{
+                                        ZStack{Rectangle().cornerRadius(40)
+                                                .foregroundColor(.oceanGreen)
+                                            VStack{
+                                                Text(taskNames[num])
+                                                Text("Start Time: " + startTimes[num])
+                                                Text("Duration: " + durationList[num])
+                                            }.padding()
+                                        }
+                                    }
+                                }else{
+                                    Spacer()
+                                }
                             }
                         }
-                        HStack{
-                            Text("\(num+1):00")
-                        }
-                    }
-                }
-            }.frame(height:350)
-        }.padding()
+                    }.padding()
+                }.frame(height:350)
+            }.padding()
+        }
     }
 }
 

@@ -13,7 +13,7 @@ struct MapPage: View {
                 latitude: 25.95711804076231,
                 longitude: -80.14282433287394)
             
-            let wynwoodwalls = CLLocationCoordinate2D(
+            let wynwalls = CLLocationCoordinate2D(
                 latitude:25.80188713285414,
                 longitude:-80.1993411845667)
             
@@ -68,6 +68,12 @@ struct MapPage: View {
             let keybiscaynebeach = CLLocationCoordinate2D(
                 latitude: 25.695155518609294,
                 longitude: -80.15703090260395)
+    let mamasbooksandcafe =
+    CLLocationCoordinate2D(
+        latitude: 26.073116981478577, longitude: -80.14409286116324)
+    
+    let booksbooks =
+    CLLocationCoordinate2D(latitude: 25.752128886912477,  longitude: -80.2599663998228)
             
             var body: some View {
                 Map() {
@@ -75,7 +81,7 @@ struct MapPage: View {
                     Marker("Aventura Mall", coordinate: aventura)
                         .tint(.red)
                     
-                    Marker("Wynwood Walls", coordinate: wynwoodwalls)
+                    Marker("Wynwood Walls", coordinate: wynwalls)
                         .tint(.red)
                     
                     Marker("South Beach", coordinate: southbeach)
@@ -110,7 +116,10 @@ struct MapPage: View {
 
                     Marker("Key Biscayne Beach", coordinate: keybiscaynebeach)
                     .tint(.yellow)
-
+                    Marker("Books & Books", coordinate:booksbooks)
+                        .tint(.purple)
+                    Marker("My Mama's books and records cafe", coordinate:mamasbooksandcafe)
+                        .tint(.purple)
                 }
                 .mapStyle(.hybrid)
                 }
