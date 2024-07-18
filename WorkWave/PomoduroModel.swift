@@ -5,15 +5,21 @@
 //  Created by Scholar on 7/17/24.
 //
 import SwiftUI
+struct PomoduroApp: App{
+    
+    @StateObject var pomoduroModel: PomoduroModel = .init()
+    
+    var body: some Scene {
+        
+        WindowGroup {
+            
+            
+        }
+    }
+}
 
-class PomoduroModel: NSObject, ObservableObject{
+#Preview{
     
-    @Published var progress: CGFloat = 1
-    @Published var timeStringValue: String = "00:00"
-    @Published var isStarted: Bool = false
-    @Published var addNewTimer: Bool = false
+    PomoduroApp() as! any View
     
-    @Published var hour: Int = 0
-    @Published var minutes: Int = 0
-    @Published var seconds: Int = 0
 }
